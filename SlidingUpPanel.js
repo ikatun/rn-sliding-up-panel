@@ -252,12 +252,6 @@ class SlidingUpPanel extends React.Component {
 
     const {top, bottom} = this.props.draggableRange
 
-    const backdropOpacity = this._translateYAnimation.interpolate({
-      inputRange: [-top, -bottom],
-      outputRange: [0.75, 0],
-      extrapolate: 'clamp'
-    })
-
     return (
       <Animated.View
         key="backdrop"
@@ -265,7 +259,7 @@ class SlidingUpPanel extends React.Component {
         ref={c => (this._backdrop = c)}
         onTouchStart={() => this._flick.stop()}
         onTouchEnd={() => this.props.onRequestClose()}
-        style={[styles.backdrop, {opacity: backdropOpacity}]}
+        style={[styles.backdrop, {opacity: 0}]}
       />
     )
   }
